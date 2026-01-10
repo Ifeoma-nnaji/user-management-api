@@ -1,0 +1,18 @@
+// Api for generating tickets
+// use weather to determine ticket price
+
+
+// //objectives
+
+// // producing the best possible solution
+// // consuming third party api
+//  logic building
+// //:use of API method of prompting
+
+// //base skill
+// start and setup a node js project (backend)
+// //implement MVC
+// // connect to DB
+// // build, manage and develop databases
+// // connecting node to SQL
+// //creating get and post Request method endpoints

@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 40px;
+      }
+      h1 {
+        text-align: center;
+      }
+      .row {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Weather Ticket</h1>
+
+    <div class="row"><strong>Ticket ID:</strong> {{ticket_id}}</div>
+    <div class="row"><strong>City:</strong> {{city}}</div>
+    <div class="row"><strong>Country:</strong> {{country}}</div>
+    <div class="row"><strong>Weather:</strong> {{weather}}</div>
+    <div class="row"><strong>Temperature:</strong> {{temperature}}°C</div>
+    <div class="row"><strong>Price:</strong> ${{price}}</div>
+    <div class="row"><strong>Issued At:</strong> {{issued_at}}</div>
+  </body>
+</html>

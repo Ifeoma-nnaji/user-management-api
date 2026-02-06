@@ -1,14 +1,14 @@
 const connPool = require("../connect");
 const {sqlObj} = require("./sql");
 
-//create ticket
+//creating ticket
 async function createTicket(data) {
   try {
-    const {ticketId, city, country, temperature, weather, price, issuedAt } = data;
+    const {ticketId, postcode, country, temperature, weather, price, issuedAt } = data;
 
     const [result] = await connPool.query(sqlObj.insert, [
       ticketId,
-      city,
+      postcode,
       country,
       temperature,
       weather,
@@ -24,9 +24,9 @@ async function createTicket(data) {
 }
 
 //list Tickets
-async function ticketList() {
+async function ticketsList() {
   try {
-    const [row] = await connPool.query(sqlObj.list);
+    const [rows] = await connPool.query(sqlObj.list);
     return rows;
   } catch (error) {
     console.log(error.message);
@@ -34,7 +34,8 @@ async function ticketList() {
   }
 }
 
+
 module.exports = {
   createTicket,
-  ticketList
+  ticketsList
 };

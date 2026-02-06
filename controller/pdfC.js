@@ -19,9 +19,9 @@ async function downloadTicketPDF(req, res) {
     const t = rows[0];
 
     //load template
-    const templetePath = path.join(__dirname, "..", "templates", "ticket.html");
-
+    const templatePath = path.join(__dirname, "..", "templates", "ticket.html");
     let html = fs.readFileSync(templatePath, "utf-8");
+
 
     //replacing the html placeholder
     html = html
@@ -31,7 +31,7 @@ async function downloadTicketPDF(req, res) {
     .replace("{{weather}}", t.weather)
     .replace("{{temperature}}", t.temperature)
     .replace("{{price}}", t.price)
-    .replace("{{issued_at}}", t. issued_at);
+    .replace("{{issued_at}}", t.issued_at);
 
     const pdfBuffer = await generatePDFfromHTML(html);
 
@@ -42,13 +42,23 @@ async function downloadTicketPDF(req, res) {
       `ticket-${ticketId}.pdf`
     );
 
+    const downloadsDir = path.join(process.cwd(), "downloads");
+    if (!fs.existsSync(downloadsDir)) {
+    fs.mkdirSync(downloadsDir);
+}
+
+
     fs.writeFileSync(filePath, pdfBuffer);
     console.log("PDF saved at:", filePath);
 
     res.set({
       "Content-Type": "application/pdf",
       "Content-Disposition": `attachment; filename=ticket-${ticketId}.pdf`,
+      
     });
+
+    res.send(pdfBuffer);
+
   
   }catch (error) {
     res.status(500).send(error.message);
@@ -56,3 +66,4 @@ async function downloadTicketPDF(req, res) {
 }
 
 module.exports = { downloadTicketPDF };
+

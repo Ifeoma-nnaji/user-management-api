@@ -5,7 +5,7 @@ async function generatePDFfromHTML(HTML) {
   const page = await browser.newPage();
 
   await page.setContent(HTML, {
-    waitUntill: "load"});
+    waitUntil: "load"});
 
     const pdfBuffer = await page.pdf({
       format: "A4",

@@ -1,10 +1,10 @@
-const mysql = require("mysql2/promise"); //lets me use async/await with MySQL
+const mysql = require("mysql2/promise");
 
-const connPool = mysql.createPool({  // help me create a a reusable database connection
-  host: "localhost",
-  user: "root",
-  password: "Nanoraexcel@94",
-  database: "WeatherTickitingSyS",
+const connPool = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 module.exports = connPool;
